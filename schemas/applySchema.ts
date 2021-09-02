@@ -2,33 +2,31 @@ import { Schema, model, connect } from 'mongoose';
 import connection from "../db/connection";
 
 
-interface Job {
+interface Apply {
     job_title:              string, 
     enterprise:             string,
-    description:            string,
-    salary:                 number,
-    add_date:               Date,
-    active:                 boolean,
+    job_offer_id:           string,
+    apply_date:             Date,
+    status:                 string,
     meta: {
     enterpriselogo_uri?:    string,
     enterprisesite_uri?:    string
   }
 }
 
-const jobSchema = new Schema<Job>({
+const applySchema = new Schema<Apply>({
   job_title:  {type: String, required: true},
   enterprise: {type: String, required: true},
-  description:   {type: String, required: true},
-  salary: [{ min: Number, max: Number, required: true }],
-  add_date: { type: Date, required: true},
-  active: {type: Boolean, required: true},
+  job_offer_id:   {type: String, required: true},
+  apply_date: { type: Date, required: true},
+  status: { type: String, required: true},
   meta: {
     enterpriselogo_uri: {type: String, required: false},
     enterprisesite_uri:  {type: String, required: false}
   }
 });
 
-const JobModel = model<Job>('Job', jobSchema);
+const applyModel = model<Apply>('Job', applySchema);
 
 run().catch(err => console.log(err));
 

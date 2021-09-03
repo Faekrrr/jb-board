@@ -3,7 +3,8 @@ import connection from "./db/connection";
 // import bodyParser from 'body-parser';
 const bodyParser  = require('body-parser');
 
-import userApi from './api/endpoints/api';
+import userApi from './api/endpoints/userApi';
+import enterpriseApi from './api/endpoints/enterpriseApi';
 
 require('dotenv').config();
 
@@ -23,7 +24,8 @@ app.listen(PORT, () => {
 });
 
 
-app.use('/api/user', userApi)
+app.use('/api/user', userApi);
+app.use('/api/enterprise', enterpriseApi);
 
 
 exports.module = app;

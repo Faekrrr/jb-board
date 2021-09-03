@@ -5,6 +5,7 @@ import connection from "../db/connection";
 interface Enterprise {
     enterprise_title:              string, 
     specialization:             string,
+    description?: string,
     admin_id:           string,
     creation_date:             Date,
     active:                 boolean,
@@ -17,6 +18,7 @@ interface Enterprise {
 const enterpriseSchema = new Schema<Enterprise>({
   enterprise_title:  {type: String, required: true},
   specialization: {type: String, required: true},
+  description: {type: String, required: false},
   admin_id:   {type: String, required: true},
   creation_date: { type: Date, required: true},
   active: { type: Boolean, required: true},
@@ -33,3 +35,5 @@ run().catch(err => console.log(err));
 async function run(): Promise<void> {
   await connection;
 }
+
+export default enterpriseModel;

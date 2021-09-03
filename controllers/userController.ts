@@ -28,9 +28,9 @@ class UserController {
         //@ts-ignore 
         const meta = {
             //@ts-ignore
-            self_description: req.body.self_description,
+            self_description: req.body.meta.self_description,
             //@ts-ignore
-            interests: req.body.interests
+            interests: req.body.meta.interests
         };
         //@ts-ignore
         const role = "member";
@@ -49,13 +49,15 @@ class UserController {
             avatar: avatar
         };
 
+        console.log(data);
+
         try{
         await userService.createUser(data);
         //@ts-ignore
-        res.json({msg: "Success"});
+        res.json({msg: "Success - User Created"});
         } catch (e) {
-            next(e);
             console.log(e);
+            next(e);
         }
     }
     

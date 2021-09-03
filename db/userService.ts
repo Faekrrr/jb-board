@@ -10,8 +10,8 @@ class UserService{
             join_date: Date.now(),
             active: true,
             meta: {
-                self_description: data.self_description,
-                interests: data.self_interests
+                self_description: data.meta.self_description,
+                interests: data.meta.interests
             },
             role: "member",
             avatar: data.avatar

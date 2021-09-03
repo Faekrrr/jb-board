@@ -5,6 +5,7 @@ const bodyParser  = require('body-parser');
 
 import userApi from './api/endpoints/userApi';
 import enterpriseApi from './api/endpoints/enterpriseApi';
+import jobsApi from './api/endpoints/jobsApi'
 
 require('dotenv').config();
 
@@ -26,7 +27,7 @@ app.listen(PORT, () => {
 
 app.use('/api/user', userApi);
 app.use('/api/enterprise', enterpriseApi);
-
+app.use('/api/jobs', jobsApi);
 
 exports.module = app;
 
